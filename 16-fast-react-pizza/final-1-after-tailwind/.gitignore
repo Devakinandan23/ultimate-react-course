@@ -33,3 +33,5 @@ yarn-error.log*
 *.sw?
 
 .gitigonore
+package-lock.json
+
