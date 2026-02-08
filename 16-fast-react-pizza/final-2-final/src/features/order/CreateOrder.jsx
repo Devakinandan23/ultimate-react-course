@@ -14,6 +14,20 @@ const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
     str
   );
+const ORDER_HISTORY_KEY = "orderHistory";
+
+function saveOrderToHistory(orderId) {
+  const raw = localStorage.getItem(ORDER_HISTORY_KEY);
+  const history = raw ? JSON.parse(raw) : [];
+
+  history.unshift({
+    id: orderId,
+    createdAt: new Date().toISOString(),
+  });
+
+  localStorage.setItem(ORDER_HISTORY_KEY, JSON.stringify(history));
+}
+
 
 function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);
@@ -163,6 +177,7 @@ export async function action({ request }) {
 
   // Do NOT overuse
   store.dispatch(clearCart());
+  saveOrderToHistory(newOrder.id);
 
   return redirect(`/order/${newOrder.id}`);
 }

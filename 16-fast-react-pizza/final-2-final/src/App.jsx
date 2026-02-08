@@ -11,6 +11,7 @@ import Order, { loader as orderLoader } from './features/order/Order';
 import { action as updateOrderAction } from './features/order/UpdateOrder';
 
 import AppLayout from './ui/AppLayout';
+import OrderHistorLayout from './ui/OrderHistoryLayout';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       { path: '/cart', element: <Cart /> },
+      { path: '/history', element: <OrderHistorLayout />},
       {
         path: '/order/new',
         element: <CreateOrder />,

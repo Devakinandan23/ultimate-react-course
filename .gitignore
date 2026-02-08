@@ -1,0 +1,54 @@
+# Node dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.out/
+.next/
+out/
+.vite/
+public/build/
+.storybook-static/
+
+# Caches
+.cache/
+.parcel-cache/
+npm_cache/
+.pnpm-store/
+
+# Coverage
+coverage/
+
+# Env files
+.env
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+pids/
+*.pid
+*.seed
+*.pid.lock

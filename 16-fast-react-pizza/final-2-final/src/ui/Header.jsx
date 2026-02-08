@@ -11,6 +11,9 @@ function Header() {
 
       <SearchOrder />
       <Username />
+      <Link to="/history">
+        Order History
+      </Link>
     </header>
   );
 }
