@@ -1,11 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { formatDate } from '../utils/helpers';
 import Button from './Button';
+import OrderPopover from './OrderPopover';
 
 const ORDER_HISTORY_KEY = 'orderHistory';
 
 function OrderHistory() {
-  const navigate = useNavigate();
+  const [openOrderId, setOpenOrderId] = useState(null);
 
   let orderHistory = [];
 
@@ -64,18 +65,24 @@ function OrderHistory() {
                   {formatDate(order.createdAt)}
                 </td>
                 <td className="px-6 py-4 text-center">
-                  <Button
-                    type="small"
-                    onClick={() => navigate(`/order/${order.id}`)}
+                  <div
+                    onMouseEnter={() => setOpenOrderId(order.id)}
+                    onMouseLeave={() => setOpenOrderId(null)}
+                    className="inline-block"
                   >
-                    View Order
-                  </Button>
+                    <Button type="small" to={`/order/${order.id}`}>
+                      View Details
+                    </Button>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {/* Popover rendered outside table to avoid overflow issues */}
+      {openOrderId && <OrderPopover orderId={openOrderId} />}
 
       <p className="mt-6 text-center text-sm text-stone-500">
         Total orders:{' '}

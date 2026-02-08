@@ -35,6 +35,7 @@ function Order() {
   } = order;
 
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
+  const canEnablePriority = deliveryIn >= 15 && !priority;
 
   return (
     <div className="space-y-8 px-4 py-6">
@@ -92,7 +93,8 @@ function Order() {
         </p>
       </div>
 
-      {!priority && <UpdateOrder order={order} />}
+      {canEnablePriority && <UpdateOrder order={order} />}
+
     </div>
   );
 }

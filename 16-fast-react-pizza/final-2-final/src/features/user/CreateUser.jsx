@@ -12,6 +12,8 @@ function CreateUser() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    localStorage.setItem('UserName',username);
+
     if (!username) return;
     dispatch(updateName(username));
     navigate('/menu');

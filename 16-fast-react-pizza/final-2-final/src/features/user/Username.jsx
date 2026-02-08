@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
 function Username() {
-  const username = useSelector((state) => state.user.username);
-
+  let username = useSelector((state) => state.user.username);
+  username = localStorage.getItem('UserName');
   if (!username) return null;
 
   return (
